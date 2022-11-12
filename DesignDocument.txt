@@ -1,0 +1,45 @@
+Alex Wang
+axw582
+CSDS293
+HW10
+
+Design Document:
+
+
+Some Error Handling Techniques [1]:
+1. Return a natural value (for example, 0).
+2. Substitute the next valid piece of data.
+3. Return the same value as last time.
+4. Substitute the closest legal value.
+5. Log a warning message to a file.
+6. Return an error code.
+7. Call an error-processing routine/object.
+8. Display an error message.
+9. Shut down.
+
+
+Strategies for Robustness:
+In computer science, robustness is the ability of a computer system to cope with errors during execution and cope with erroneous input.[2]
+
+One thing to improve the robustness of this program is to handle incorrectly formatted data. If the input is formatted incorrectly to this program, it will try to work around the issues before throwing an error. Some examples:
+[1] If the Illegal Users are incorrectly put before the Failed Users in the Security Log, the program should still put out the correct output.
+[2] If there is either whitespace OR an opening parenthesis between the ip address and domain name, the program should still put out the correct output.
+[3] If there is either whitespace OR a closing parenthesis OR a colon between the domain and the tries, the program should still put out the correct output.
+[4] If there is extra whitespace between sections in the Security Log, the program should still put out the correct output.
+[5] If there is no domain name, the program should still output correctly but replace the hostname with the ip address.
+[6] If there is no "times" or "time" token before or after the number of tries, the program should ignore these formatting issues and take the first number after the ip address / domain name as the number of tries.
+[7] If there are other sections besides "Failed logins" or "Illegal users," they should be ignored.
+
+While robustness is a priority in the program, there are some formatting issues that cannot be ignored:
+[1] There MUST be a label (either "Failed logins from:\n" or "lllegal users from:\n") before each section in the Security Log. 
+[2] There MUST be some delineation (whitespace or otherwise) between the ip address, domain name, and tries as discussed above.
+[3] There MUST be at least one blank line between sections in the Security Log.
+
+
+Error Handling:
+Errors should be handled at a high level using try-catch blocks where applicable.
+
+
+sources:
+[1] Code Complete 2nd, pg. 194-196
+[2] https://en.wikipedia.org/wiki/Robustness_(computer_science)
