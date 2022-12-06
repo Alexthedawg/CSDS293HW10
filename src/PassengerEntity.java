@@ -1,4 +1,5 @@
-s class represents a Passenger or
+/**
+ * This class represents a Passenger or
  * PassengerGroup waiting in line at a Station
  * waiting to be assisted.
  *

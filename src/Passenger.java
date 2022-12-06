@@ -1,4 +1,4 @@
-mport java.util.Objects;
+import java.util.Objects;
 
 /**
  * This class represents a Passenger in line
