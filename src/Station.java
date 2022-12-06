@@ -1,10 +1,20 @@
 import java.util.*;
 import java.util.stream.Stream;
 
+/**
+ * This represents a Station in Airville.
+ * Agents and Supervisors may assist Passengers
+ * and PassengerGroups at a Station.
+ *
+ * @author alex wang axw582@case.edu
+ * @version 0.0.1
+ */
 public class Station {
 
     /**
-     * The maximum baseline processing time for a PassengerEntity.
+     * MAX_PROCESSING_TIME is the maximum baseline processing time for a PassengerEntity.
+     * MIN_QUEUE_LENGTH is the minimum number of Passengers generated in a new queue.
+     * MAX_QUEUE_LENGTH is the maximum number of Passengers generated in a new queue.
      */
     private static final double MAX_PROCESSING_TIME = 10.0;
     private static final int MIN_QUEUE_LENGTH = 10;
@@ -118,9 +128,9 @@ public class Station {
         if (this.queue.peekNextPassenger() != null
                 && this.queue.peekNextPassenger().isIrregular()) {
             return this.queue.getNextPassenger();
-        } else {
-            return null;
-        }
+        } // if -- the next PassengerEntity exists
+
+        return null;
     }
 
     /**
@@ -135,7 +145,7 @@ public class Station {
         /* Null check. */
         if (passengerEntity == null) {
             return -1.0;
-        }
+        } // if -- next passenger is null
 
         /* Process this Passenger if possible. */
         if (this.canProcess(passengerEntity)) {
@@ -145,8 +155,8 @@ public class Station {
             /* Reduce processing time in half if Supervisor present. */
             if (this.hasSupervisor()) {
                 totalProcessingTime *= 0.5;
-            }
-        }
+            } // if -- checking for Supervisor
+        } // if -- checking whether passengerEntity can be processed
 
         return totalProcessingTime;
     }
@@ -161,12 +171,12 @@ public class Station {
         /* Return false if this Passenger needs an In-Person Station. */
         if (passengerEntity.isIrregular() && this.isAutomated()) {
             return false;
-        }
+        } // if -- passengerEntity can be processed
 
         /* Return false if this Passenger needs to see a Supervisor. */
         if (passengerEntity.needsSupervisor() && !this.hasSupervisor()) {
             return false;
-        }
+        } // if -- passengerEntity can be processed
 
         return true;
     }
@@ -184,9 +194,9 @@ public class Station {
             Stream<PassengerEntity> regularFlyers = populateQueue(random.nextInt(MIN_QUEUE_LENGTH, MAX_QUEUE_LENGTH));
             this.queue = new PassengerSupplier(frequentFlyers, regularFlyers);
             return true;
-        } else {
-            return false;
-        }
+        } // if -- queue is not empty
+
+        return false;
     }
 
     /**
@@ -206,7 +216,7 @@ public class Station {
         for (int i = 0; i < passengerQueue.length; i++) {
             passengerQueue[i] = new Passenger(random.nextDouble(MAX_PROCESSING_TIME),
                                         types.get(random.nextInt(types.size())));
-        }
+        } // for -- end of passengerQueue array
 
         return Arrays.stream(passengerQueue);
     }

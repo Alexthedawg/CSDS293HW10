@@ -1,12 +1,23 @@
 import java.util.List;
 
+/**
+ * This class represents an Agent Entity in Airville.
+ * An Agent helps process Passengers and PassengerGroups
+ * at a Station.
+ *
+ * @author alex wang axw582@case.edu
+ * @version 0.0.1
+ */
 public class Agent extends EmployeeEntity {
 
+    /**
+     * Tracks the machines that this Agent oversees.
+     */
     List<AutomatedAgent> machines;
 
     /**
-     * A constructor.
-     * @param machines
+     * A constructor for an Agent.
+     * @param machines the machines that this Agent oversees.
      */
     public Agent(List<AutomatedAgent> machines) {
         this.machines = machines;

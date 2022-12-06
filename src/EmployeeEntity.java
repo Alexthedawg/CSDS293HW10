@@ -1,6 +1,14 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class represents an Employee Entity in Airville.
+ * Employees can assist Passengers and PassengerGroups at
+ * Stations.
+ *
+ * @author alex wang axw582@case.edu
+ * @version 0.0.1
+ */
 public abstract class EmployeeEntity extends Entity {
     /**
      * Tracks whether this EmployeeEntity is busy or not.
@@ -24,7 +32,7 @@ public abstract class EmployeeEntity extends Entity {
         /* If the passenger is of a particular type, increase the processing time. */
         if (passenger.getPassengerType() != PassengerType.REGULAR) {
             totalTime *= 1.5;
-        }
+        } // if -- passenger is irregular
 
         return totalTime;
     }
@@ -59,7 +67,7 @@ public abstract class EmployeeEntity extends Entity {
             this.isBusy = true;
             this.busyTime = time;
             return true;
-        }
+        } // if -- EmployeeEntity is already busy
     }
 
     /**

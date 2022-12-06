@@ -1,8 +1,18 @@
-import java.util.ArrayList;
+mport java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Stream;
 
+/**
+ * This class represents a group of Passengers
+ * waiting in line at a Station. A PassengerGroup
+ * has a shorter processing time than the cumulative
+ * processing time of each individual Passenger
+ * combined.
+ *
+ * @author alex wang axw582@case.edu
+ * @version 0.0.1
+ */
 public class PassengerGroup extends PassengerEntity {
 
     /**

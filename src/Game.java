@@ -2,6 +2,16 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.DoubleStream;
 
+/**
+ * This class represents the stage upon which
+ * the Game Airville takes place. This is the
+ * Main class that tracks all Entities and
+ * Stations that exist in the Game. The class also
+ * tracks the currency (diamonds) in this Game.
+ *
+ * @author alex wang axw582@case.edu
+ * @version 0.0.1
+ */
 public class Game {
 
     /**
@@ -47,6 +57,13 @@ public class Game {
         this.stationList = stationList;
     }
 
+    /**
+     * A method to buy an "in-person" Station. An in-person
+     * Station is bought with a non-automated Agent.
+     *
+     * @param cost the cost to buy an in-person Station.
+     * @return true if the in-person Station was bought.
+     */
     public boolean buyInPersonStation(int cost) {
         if (this.diamonds >= cost) {
             this.diamonds -= cost;
@@ -56,10 +73,17 @@ public class Game {
             this.stationList.add(station);
             this.entityList.add(agent);
             return true;
-        }
+        } // if -- not enough diamonds
         return false;
     }
 
+    /**
+     * A method to buy an "automated" Station. An in-person
+     * Station is bought alongside an automated Agent.
+     *
+     * @param cost the cost to buy an automated Station.
+     * @return true if the automated Station was bought.
+     */
     public boolean buyAutomatedStation(int cost) {
         if (this.diamonds >= cost) {
             this.diamonds -= cost;
@@ -69,17 +93,24 @@ public class Game {
             this.stationList.add(station);
             this.entityList.add(agent);
             return true;
-        }
+        } // if -- not enough diamonds
         return false;
     }
 
+    /**
+     * A method to buy a Supervisor at a
+     * specified cost with diamonds.
+     *
+     * @param cost the cost to buy a Supervisor.
+     * @return true if the Supervisor was bought.
+     */
     public boolean buySupervisor(int cost) {
         if (this.diamonds >= cost) {
             this.diamonds -= cost;
             Supervisor supervisor = new Supervisor();
             this.entityList.add(supervisor);
             return true;
-        }
+        } // if -- not enough diamonds
         return false;
     }
 

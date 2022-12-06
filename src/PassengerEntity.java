@@ -1,3 +1,10 @@
+s class represents a Passenger or
+ * PassengerGroup waiting in line at a Station
+ * waiting to be assisted.
+ *
+ * @author alex wang axw582@case.edu
+ * @version 0.0.1
+ */
 public abstract class PassengerEntity extends Entity {
 
     /**
